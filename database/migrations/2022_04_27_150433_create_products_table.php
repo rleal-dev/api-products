@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,14 +13,16 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('description')->unique();
+            $table->foreignId('category_id')->constrained();
+            $table->string('dimensions', 100);
+            $table->string('code', 100);
+            $table->string('reference', 100);
+            $table->unsignedInteger('quantity_stock')->default(0);
+            $table->unsignedDecimal('price', 10, 2);
             $table->boolean('is_active')->default(1);
-            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes()->index();
         });
@@ -32,6 +35,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('products');
     }
 };
