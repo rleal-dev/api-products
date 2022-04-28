@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -12,3 +10,12 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+use Illuminate\Support\Facades\Route;
+use App\Api\User\Controllers\UserController;
+
+Route::prefix('v1')->middleware('json.response')->group(function () {
+    Route::apiResources([
+        'users' => UserController::class,
+    ]);
+});
