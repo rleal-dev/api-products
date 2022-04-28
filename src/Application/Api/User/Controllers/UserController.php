@@ -2,101 +2,104 @@
 
 namespace App\Api\User\Controllers;
 
+use App\Api\Base\ApiController;
 use App\Api\User\Requests\UserRequest;
-use App\Api\User\Resources\UserCollection;
-use Domain\User\Actions\{ListUsers};
+use App\Api\User\Resources\{UserCollection, UserResource};
+use Domain\User\Actions\{CreateUser, DeleteUser, GetUser, ListUsers, UpdateUser};
 
-class UserController
+class UserController extends ApiController
 {
     /**
      * Get the user list.
      *
+     * @param ListUsers $listUsers
+     *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index(ListUsers $action)
+    public function index(ListUsers $listUsers)
     {
-        return new UserCollection($action->execute());
+        return new UserCollection($listUsers->execute());
     }
 
     /**
      * Store a new user.
      *
-     * @param UserRequest  $request
-     * @param CreateUser  $action
+     * @param UserRequest $request
+     * @param CreateUser $createUser
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(UserRequest $request, CreateUser $action)
+    public function store(UserRequest $request, CreateUser $createUser)
     {
-        // try {
-        //     $user = $action->execute($request);
-        // } catch (Throwable $exception) {
-        //     throw_if(is_development(), $exception);
+        try {
+            $user = $createUser->execute($request);
+        } catch (Throwable $exception) {
+            throw_if(is_development(), $exception);
 
-        //     return $this->responseError('Error on create user!');
-        // }
+            return $this->responseError('Error on create user!');
+        }
 
-        // return $this->responseCreated(
-        //     'User created successfully!',
-        //     new UserResource($user)
-        // );
+        return $this->responseCreated(
+            'User created successfully!',
+            new UserResource($user)
+        );
     }
 
     /**
-     * Get the user.
+     * Get the user by id.
      *
-     * @param User $user
+     * @param int $id
+     * @param GetUser $getUser
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(User $user)
+    public function show(int $id, GetUser $getUser)
     {
-        // return new UserResource($user);
+        $user = $getUser->execute($id);
+
+        return new UserResource($user);
     }
 
     /**
      * Update a user information.
      *
      * @param UserRequest  $request
-     * @param User $user
-     * @param UpdateUser  $action
+     * @param int $id
+     * @param UpdateUser  $updateUser
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(UserRequest $request, User $user, UpdateUser $action)
+    public function update(UserRequest $request, int $id, UpdateUser $updateUser)
     {
-        // try {
-        //     $action->execute($user, $request);
-        // } catch (Throwable $exception) {
-        //     throw_if(is_development(), $exception);
+        try {
+            $updateUser->execute($id, $request);
+        } catch (Throwable $exception) {
+            throw_if(is_development(), $exception);
 
-        //     return $this->responseError('Error on update user!');
-        // }
+            return $this->responseError('Error on update user!');
+        }
 
-        // return $this->responseOk(
-        //     'User updated successfully!',
-        //     new UserResource($user)
-        // );
+        return $this->responseOk('User updated successfully!');
     }
 
     /**
-     * Delete a user.
+     * Delete a user by id.
      *
-     * @param User $user
-     * @param DeleteUser $action
+     * @param int $id
+     * @param DeleteUser $deleteUser
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(User $user, DeleteUser $action)
+    public function destroy(int $id, DeleteUser $deleteUser)
     {
-        // try {
-        //     $action->execute($user);
-        // } catch (Throwable $exception) {
-        //     throw_if(is_development(), $exception);
+        try {
+            $deleteUser->execute($id);
+        } catch (Throwable $exception) {
+            throw_if(is_development(), $exception);
 
-        //     return $this->responseError('Error on delete user!');
-        // }
+            return $this->responseError('Error on delete user!');
+        }
 
-        // return $this->responseOk('User deleted successfully!');
+        return $this->responseOk('User deleted successfully!');
     }
 }

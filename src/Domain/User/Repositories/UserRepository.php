@@ -20,11 +20,11 @@ class UserRepository implements UserRepositoryInterface
      */
     public function findAll()
     {
-        return $this->model->paginate();
+        return $this->model->simPlePaginate();
     }
 
     /**
-     * Find model by id.
+     * Get user by id.
      *
      * @param int $id
      *

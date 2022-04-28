@@ -11,8 +11,8 @@
 |
 */
 
-use Illuminate\Support\Facades\Route;
 use App\Api\User\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->middleware('json.response')->group(function () {
     Route::apiResources([

@@ -3,12 +3,12 @@
 namespace Domain\User\Actions;
 
 use Domain\User\Contracts\UserRepositoryInterface;
-use Illuminate\Database\Eloquent\Collection;
+use Domain\User\Models\User;
 
-class ListUsers
+class GetUser
 {
     /**
-     * ListUsers Contructor
+     * GetUser Contructor
      */
     public function __construct(
         private UserRepositoryInterface $userRepository
@@ -17,12 +17,14 @@ class ListUsers
     }
 
     /**
-     * Get all users
+     * Get user by id
      *
-     * @return Collection
+     * @param int $id
+     *
+     * @return User
      */
-    public function execute()
+    public function execute(int $id): User
     {
-        return $this->userRepository->findAll();
+        return $this->userRepository->findById($id);
     }
 }
