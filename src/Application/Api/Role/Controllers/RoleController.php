@@ -6,6 +6,7 @@ use App\Api\Base\ApiController;
 use App\Api\Role\Requests\RoleRequest;
 use App\Api\Role\Resources\{RoleCollection, RoleResource};
 use Domain\Role\Actions\{CreateRole, DeleteRole, GetRole, ListRoles, UpdateRole};
+use Throwable;
 
 class RoleController extends ApiController
 {

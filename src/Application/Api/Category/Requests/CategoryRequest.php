@@ -25,7 +25,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'description' => ['required', 'min:5', 'unique:categories,description,' . $this->segment(4)],
-            'is_active' => ['nullable', 'boolean']
+            'is_active' => ['nullable', 'boolean'],
         ];
     }
 }

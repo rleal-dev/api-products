@@ -6,6 +6,7 @@ use App\Api\Base\ApiController;
 use App\Api\Product\Requests\ProductRequest;
 use App\Api\Product\Resources\{ProductCollection, ProductResource};
 use Domain\Product\Actions\{CreateProduct, DeleteProduct, GetProduct, ListProducts, UpdateProduct};
+use Throwable;
 
 class ProductController extends ApiController
 {

@@ -78,6 +78,18 @@ abstract class ApiController
     }
 
     /**
+     * Returns the unauthorized response.
+     *
+     * @param mixed $message
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function responseUnauthorized($message)
+    {
+        return $this->response($message, [], Response::HTTP_UNAUTHORIZED);
+    }
+
+    /**
      * Returns error response.
      *
      * @param mixed $message

@@ -6,6 +6,7 @@ use App\Api\Base\ApiController;
 use App\Api\User\Requests\UserRequest;
 use App\Api\User\Resources\{UserCollection, UserResource};
 use Domain\User\Actions\{CreateUser, DeleteUser, GetUser, ListUsers, UpdateUser};
+use Throwable;
 
 class UserController extends ApiController
 {

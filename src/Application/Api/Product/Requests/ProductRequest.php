@@ -31,7 +31,7 @@ class ProductRequest extends FormRequest
             'reference'      => ['required', 'max:100'],
             'quantity_stock' => ['required', 'numeric'],
             'price'          => ['required', 'numeric'],
-            'is_active'      => ['nullable', 'boolean']
+            'is_active'      => ['nullable', 'boolean'],
         ];
     }
 }

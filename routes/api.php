@@ -11,18 +11,25 @@
 |
 */
 
-use App\Api\User\Controllers\UserController;
-use App\Api\Role\Controllers\RoleController;
+use App\Api\Auth\Controllers\{LoginController, LogoutController, RegisterController};
 use App\Api\Category\Controllers\CategoryController;
 use App\Api\Product\Controllers\ProductController;
-
+use App\Api\Role\Controllers\RoleController;
+use App\Api\User\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->middleware('json.response')->group(function () {
-    Route::apiResources([
-        'users'      => UserController::class,
-        'roles'      => RoleController::class,
-        'categories' => CategoryController::class,
-        'products'   => ProductController::class,
-    ]);
+    Route::post('register', RegisterController::class);
+    Route::post('login', LoginController::class);
+
+    Route::middleware(['auth:sanctum'])->group(function () {
+        Route::delete('logout', LogoutController::class);
+
+        Route::apiResources([
+            'users'      => UserController::class,
+            'roles'      => RoleController::class,
+            'categories' => CategoryController::class,
+            'products'   => ProductController::class,
+        ]);
+    });
 });

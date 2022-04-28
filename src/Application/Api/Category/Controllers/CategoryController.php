@@ -6,6 +6,7 @@ use App\Api\Base\ApiController;
 use App\Api\Category\Requests\CategoryRequest;
 use App\Api\Category\Resources\{CategoryCollection, CategoryResource};
 use Domain\Category\Actions\{CreateCategory, DeleteCategory, GetCategory, ListCategories, UpdateCategory};
+use Throwable;
 
 class CategoryController extends ApiController
 {

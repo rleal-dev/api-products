@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Api\Role\Requests;
+namespace App\Api\Auth\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RoleRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
@@ -21,11 +21,12 @@ class RoleRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            'name' => ['required', 'min:5', 'unique:roles,name,' . $this->segment(4)],
-            'is_active' => ['nullable', 'boolean'],
+            'name' => ['required', 'max:150'],
+            'email' => ['required', 'email', 'max:150', 'unique:users'],
+            'password' => ['required', 'min:8', 'confirmed'],
         ];
     }
 }
