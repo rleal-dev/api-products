@@ -29,6 +29,7 @@ class UserRequest extends FormRequest
             'name' => ['required', 'min:5', 'max:150'],
             'email' => ['required', 'email', 'max:150', 'unique:users,email,' . $this->segment(4)],
             'password' => [$passwordRule, 'min:8', 'confirmed'],
+            'is_active' => ['nullable', 'boolean'],
         ];
     }
 

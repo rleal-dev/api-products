@@ -9,7 +9,7 @@ use Domain\User\Models\User;
 class CreateUser
 {
     /**
-     * CreateUser Contructor
+     * CreateUser Constructor
      */
     public function __construct(
         private UserRepositoryInterface $userRepository

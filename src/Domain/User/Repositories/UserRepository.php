@@ -8,10 +8,10 @@ use Domain\User\Models\User;
 class UserRepository implements UserRepositoryInterface
 {
     /**
-     * UserRepository contructor
+     * UserRepository Constructor
      */
     public function __construct(
-        private User $model
+        private User $user
     ) {
     }
 
@@ -20,7 +20,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function findAll()
     {
-        return $this->model->simPlePaginate();
+        return $this->user->simPlePaginate();
     }
 
     /**
@@ -32,7 +32,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function findById(int $id): User
     {
-        return $this->model->findOrFail($id);
+        return $this->user->findOrFail($id);
     }
 
     /**
@@ -44,7 +44,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function create(array $data): User
     {
-        return $this->model->create($data);
+        return $this->user->create($data);
     }
 
     /**

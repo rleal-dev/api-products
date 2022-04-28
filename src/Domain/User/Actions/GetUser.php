@@ -8,7 +8,7 @@ use Domain\User\Models\User;
 class GetUser
 {
     /**
-     * GetUser Contructor
+     * GetUser Constructor
      */
     public function __construct(
         private UserRepositoryInterface $userRepository

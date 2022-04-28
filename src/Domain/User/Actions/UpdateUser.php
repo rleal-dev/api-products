@@ -8,7 +8,7 @@ use Domain\User\Contracts\UserRepositoryInterface;
 class UpdateUser
 {
     /**
-     * UpdateUser Contructor
+     * UpdateUser Constructor
      */
     public function __construct(
         private UserRepositoryInterface $userRepository

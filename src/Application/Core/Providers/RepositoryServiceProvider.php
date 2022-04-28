@@ -2,7 +2,6 @@
 
 namespace App\Core\Providers;
 
-use Domain\User\{Contracts, Repositories};
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -11,7 +10,8 @@ class RepositoryServiceProvider extends ServiceProvider
      * @var array
      */
     private $binds = [
-        Contracts\UserRepositoryInterface::class => Repositories\UserRepository::class,
+        \Domain\User\Contracts\UserRepositoryInterface::class => \Domain\User\Repositories\UserRepository::class,
+        \Domain\Role\Contracts\RoleRepositoryInterface::class => \Domain\Role\Repositories\RoleRepository::class,
     ];
 
     /**

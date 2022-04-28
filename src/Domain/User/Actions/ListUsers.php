@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 class ListUsers
 {
     /**
-     * ListUsers Contructor
+     * ListUsers Constructor
      */
     public function __construct(
         private UserRepositoryInterface $userRepository

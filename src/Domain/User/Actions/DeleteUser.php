@@ -8,7 +8,7 @@ use Domain\User\Models\User;
 class DeleteUser
 {
     /**
-     * DeleteUser Contructor
+     * DeleteUser Constructor
      */
     public function __construct(
         private UserRepositoryInterface $userRepository
