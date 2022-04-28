@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\User\Actions;
+namespace Domain\Auth\Actions;
 
 use App\Api\Auth\Requests\LoginRequest;
 

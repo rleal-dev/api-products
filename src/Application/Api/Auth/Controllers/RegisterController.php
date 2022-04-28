@@ -4,7 +4,7 @@ namespace App\Api\Auth\Controllers;
 
 use App\Api\Auth\Requests\RegisterRequest;
 use App\Api\Base\ApiController;
-use Domain\User\Actions\Register;
+use Domain\Auth\Actions\Register;
 use Throwable;
 
 class RegisterController extends ApiController

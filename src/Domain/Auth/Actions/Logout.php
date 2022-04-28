@@ -1,9 +1,9 @@
 <?php
 
-namespace Domain\User\Actions\Auth;
+namespace Domain\Auth\Actions;
 
+use Domain\Auth\Enums\LogoutType;
 use App\Api\Auth\Requests\LogoutRequest;
-use Domain\User\Enums\LogoutType;
 
 class Logout
 {

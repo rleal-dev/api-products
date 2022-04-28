@@ -4,7 +4,7 @@ namespace App\Api\Auth\Controllers;
 
 use App\Api\Auth\Requests\LogoutRequest;
 use App\Api\Base\ApiController;
-use Domain\User\Actions\Auth\Logout;
+use Domain\Auth\Actions\Logout;
 use Throwable;
 
 class LogoutController extends ApiController

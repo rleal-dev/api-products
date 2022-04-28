@@ -44,7 +44,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the user's first name.
+     * Get the user's password.
      *
      * @return \Illuminate\Database\Eloquent\Casts\Attribute
      */

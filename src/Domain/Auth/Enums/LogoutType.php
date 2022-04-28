@@ -1,10 +1,8 @@
 <?php
 
-namespace Domain\User\Enums;
+namespace Domain\Auth\Enums;
 
-class LogoutType
-{
-    public const ALL_TOKENS = 'ALL_TOKENS';
-
-    public const CURRENT_TOKEN = 'CURRENT_TOKEN';
+enum LogoutType: string {
+    case ALL_TOKENS = 'ALL_TOKENS';
+    case CURRENT_TOKEN = 'CURRENT_TOKEN';
 }

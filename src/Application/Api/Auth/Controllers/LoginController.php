@@ -4,7 +4,7 @@ namespace App\Api\Auth\Controllers;
 
 use App\Api\Auth\Requests\LoginRequest;
 use App\Api\Base\ApiController;
-use Domain\User\Actions\Login;
+use Domain\Auth\Actions\Login;
 use Throwable;
 
 class LoginController extends ApiController
