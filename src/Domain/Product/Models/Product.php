@@ -2,10 +2,12 @@
 
 namespace Domain\Product\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\{Model, SoftDeletes};
 
 class Product extends Model
 {
+    use SoftDeletes;
+
     /**
      * The attributes that are mass assignable.
      *
