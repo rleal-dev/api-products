@@ -3,7 +3,7 @@
 namespace App\Api\Product\Controllers;
 
 use App\Api\Base\ApiController;
-use App\Api\Product\Requests\ProductRequest;
+use App\Api\Product\Requests\{ProductCreateRequest, ProductUpdateRequest};
 use App\Api\Product\Resources\{ProductCollection, ProductResource};
 use Domain\Product\Actions\{CreateProduct, DeleteProduct, GetProduct, ListProducts, UpdateProduct};
 use Throwable;
@@ -67,12 +67,12 @@ class ProductController extends ApiController
      *   security={{"bearerAuth": {}}},
      * )
      *
-     * @param ProductRequest $request
+     * @param ProductCreateRequest $request
      * @param CreateProduct $createProduct
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(ProductRequest $request, CreateProduct $createProduct)
+    public function store(ProductCreateRequest $request, CreateProduct $createProduct)
     {
         try {
             $product = $createProduct->execute($request);
@@ -157,13 +157,13 @@ class ProductController extends ApiController
      *   security={{"bearerAuth": {}}},
      * )
      *
-     * @param ProductRequest  $request
+     * @param ProductUpdateRequest  $request
      * @param int $id
      * @param UpdateProduct  $updateProduct
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(ProductRequest $request, int $id, UpdateProduct $updateProduct)
+    public function update(ProductUpdateRequest $request, int $id, UpdateProduct $updateProduct)
     {
         try {
             $updateProduct->execute($id, $request);

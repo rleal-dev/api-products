@@ -4,7 +4,7 @@ namespace App\Api\Product\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductRequest extends FormRequest
+class ProductCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class ProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'description'    => ['required', 'min:5', 'unique:products,description,' . $this->segment(4)],
+            'description'    => ['required', 'min:5', 'unique:products,description'],
             'category_id'    => ['required', 'numeric', 'exists:categories,id'],
             'dimensions'     => ['required', 'max:100'],
             'code'           => ['required', 'max:100'],

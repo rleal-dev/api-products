@@ -2,7 +2,7 @@
 
 namespace Domain\User\Actions;
 
-use App\Api\User\Requests\UserRequest;
+use App\Api\User\Requests\UserUpdateRequest;
 use Domain\User\Contracts\UserRepositoryInterface;
 
 class UpdateUser
@@ -20,12 +20,12 @@ class UpdateUser
      * Update user
      *
      * @param int $id
-     * @param UserRequest $request
+     * @param UserUpdateRequest $request
      *
      * @return bool
      */
-    public function execute(int $id, UserRequest $request): bool
+    public function execute(int $id, UserUpdateRequest $request): bool
     {
-        return $this->userRepository->update($id, $request->validated());
+        return $this->userRepository->update($id, $request->filtered());
     }
 }

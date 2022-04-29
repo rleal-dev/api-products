@@ -2,7 +2,7 @@
 
 namespace Domain\Product\Actions;
 
-use App\Api\Product\Requests\ProductRequest;
+use App\Api\Product\Requests\ProductCreateRequest;
 use Domain\Product\Contracts\ProductRepositoryInterface;
 use Domain\Product\Models\Product;
 
@@ -20,11 +20,11 @@ class CreateProduct
     /**
      * Create a product
      *
-     * @param ProductRequest $request
+     * @param ProductCreateRequest $request
      *
      * @return Product
      */
-    public function execute(ProductRequest $request): Product
+    public function execute(ProductCreateRequest $request): Product
     {
         return $this->productRepository->create($request->validated());
     }

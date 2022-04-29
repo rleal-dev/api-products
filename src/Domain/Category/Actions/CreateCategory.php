@@ -2,7 +2,7 @@
 
 namespace Domain\Category\Actions;
 
-use App\Api\Category\Requests\CategoryRequest;
+use App\Api\Category\Requests\CategoryCreateRequest;
 use Domain\Category\Contracts\CategoryRepositoryInterface;
 use Domain\Category\Models\Category;
 
@@ -20,11 +20,11 @@ class CreateCategory
     /**
      * Create a category
      *
-     * @param CategoryRequest $request
+     * @param CategoryCreateRequest $request
      *
      * @return Category
      */
-    public function execute(CategoryRequest $request): Category
+    public function execute(CategoryCreateRequest $request): Category
     {
         return $this->categoryRepository->create($request->validated());
     }

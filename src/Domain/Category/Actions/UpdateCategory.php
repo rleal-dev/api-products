@@ -2,7 +2,7 @@
 
 namespace Domain\Category\Actions;
 
-use App\Api\Category\Requests\CategoryRequest;
+use App\Api\Category\Requests\CategoryUpdateRequest;
 use Domain\Category\Contracts\CategoryRepositoryInterface;
 
 class UpdateCategory
@@ -24,7 +24,7 @@ class UpdateCategory
      *
      * @return bool
      */
-    public function execute(int $id, CategoryRequest $request): bool
+    public function execute(int $id, CategoryUpdateRequest $request): bool
     {
         return $this->categoryRepository->update($id, $request->validated());
     }

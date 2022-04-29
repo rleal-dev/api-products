@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Api\Category\Requests;
+namespace App\Api\User\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryRequest extends FormRequest
+class UserCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,9 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'description' => ['required', 'min:5', 'unique:categories,description,' . $this->segment(4)],
+            'name' => ['required', 'min:5', 'max:150'],
+            'email' => ['required', 'email', 'max:150', 'unique:users,email,' . $this->segment(4)],
+            'password' => ['required', 'min:8', 'confirmed'],
             'is_active' => ['nullable', 'boolean'],
         ];
     }

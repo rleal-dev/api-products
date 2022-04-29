@@ -2,7 +2,7 @@
 
 namespace Domain\Role\Actions;
 
-use App\Api\Role\Requests\RoleRequest;
+use App\Api\Role\Requests\RoleUpdateRequest;
 use Domain\Role\Contracts\RoleRepositoryInterface;
 
 class UpdateRole
@@ -20,11 +20,11 @@ class UpdateRole
      * Update role
      *
      * @param int $id
-     * @param RoleRequest $request
+     * @param RoleUpdateRequest $request
      *
      * @return bool
      */
-    public function execute(int $id, RoleRequest $request): bool
+    public function execute(int $id, RoleUpdateRequest $request): bool
     {
         return $this->roleRepository->update($id, $request->validated());
     }

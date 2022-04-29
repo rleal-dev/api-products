@@ -4,7 +4,7 @@ namespace App\Api\User\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class UserUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +23,10 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-        $passwordRule = $this->isMethod('post') ? 'required' : 'nullable';
-
         return [
-            'name' => ['required', 'min:5', 'max:150'],
-            'email' => ['required', 'email', 'max:150', 'unique:users,email,' . $this->segment(4)],
-            'password' => [$passwordRule, 'min:8', 'confirmed'],
+            'name' => ['nullable', 'min:5', 'max:150'],
+            'email' => ['nullable', 'email', 'max:150', 'unique:users,email,' . $this->segment(4)],
+            'password' => ['nullable', 'min:8', 'confirmed'],
             'is_active' => ['nullable', 'boolean'],
         ];
     }

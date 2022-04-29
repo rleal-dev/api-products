@@ -4,7 +4,7 @@ namespace App\Api\Role\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RoleRequest extends FormRequest
+class RoleUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class RoleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'min:5', 'unique:roles,name,' . $this->segment(4)],
+            'name' => ['nullable', 'min:5', 'unique:roles,name,' . $this->segment(4)],
             'is_active' => ['nullable', 'boolean'],
         ];
     }

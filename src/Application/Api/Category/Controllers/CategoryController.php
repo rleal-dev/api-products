@@ -3,7 +3,7 @@
 namespace App\Api\Category\Controllers;
 
 use App\Api\Base\ApiController;
-use App\Api\Category\Requests\CategoryRequest;
+use App\Api\Category\Requests\{CategoryCreateRequest, CategoryUpdateRequest};
 use App\Api\Category\Resources\{CategoryCollection, CategoryResource};
 use Domain\Category\Actions\{CreateCategory, DeleteCategory, GetCategory, ListCategories, UpdateCategory};
 use Throwable;
@@ -62,11 +62,11 @@ class CategoryController extends ApiController
      * )
      *
      * @param CategoryRequest $request
-     * @param CreateCategory $createCategory
+     * @param CategoryCreateRequest $createCategory
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(CategoryRequest $request, CreateCategory $createCategory)
+    public function store(CategoryCreateRequest $request, CreateCategory $createCategory)
     {
         try {
             $category = $createCategory->execute($request);
@@ -148,13 +148,13 @@ class CategoryController extends ApiController
      *   security={{"bearerAuth": {}}},
      * )
      *
-     * @param CategoryRequest  $request
+     * @param CategoryUpdateRequest  $request
      * @param int $id
      * @param UpdateCategory  $updateCategory
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(CategoryRequest $request, int $id, UpdateCategory $updateCategory)
+    public function update(CategoryUpdateRequest $request, int $id, UpdateCategory $updateCategory)
     {
         try {
             $updateCategory->execute($id, $request);

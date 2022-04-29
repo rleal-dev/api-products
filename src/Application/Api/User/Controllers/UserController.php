@@ -3,7 +3,7 @@
 namespace App\Api\User\Controllers;
 
 use App\Api\Base\ApiController;
-use App\Api\User\Requests\UserRequest;
+use App\Api\User\Requests\{UserCreateRequest, UserUpdateRequest};
 use App\Api\User\Resources\{UserCollection, UserResource};
 use Domain\User\Actions\{CreateUser, DeleteUser, GetUser, ListUsers, UpdateUser};
 use Throwable;
@@ -64,12 +64,12 @@ class UserController extends ApiController
      *   security={{"bearerAuth": {}}},
      * )
      *
-     * @param UserRequest $request
+     * @param UserCreateRequest $request
      * @param CreateUser $createUser
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(UserRequest $request, CreateUser $createUser)
+    public function store(UserCreateRequest $request, CreateUser $createUser)
     {
         try {
             $user = $createUser->execute($request);
@@ -151,13 +151,13 @@ class UserController extends ApiController
      *   security={{"bearerAuth": {}}},
      * )
      *
-     * @param UserRequest  $request
+     * @param UserUpdateRequest  $request
      * @param int $id
      * @param UpdateUser  $updateUser
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(UserRequest $request, int $id, UpdateUser $updateUser)
+    public function update(UserUpdateRequest $request, int $id, UpdateUser $updateUser)
     {
         try {
             $updateUser->execute($id, $request);

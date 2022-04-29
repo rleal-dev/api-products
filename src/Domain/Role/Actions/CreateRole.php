@@ -2,7 +2,7 @@
 
 namespace Domain\Role\Actions;
 
-use App\Api\Role\Requests\RoleRequest;
+use App\Api\Role\Requests\RoleCreateRequest;
 use Domain\Role\Contracts\RoleRepositoryInterface;
 use Domain\Role\Models\Role;
 
@@ -20,11 +20,11 @@ class CreateRole
     /**
      * Create a role
      *
-     * @param RoleRequest $request
+     * @param RoleCreateRequest $request
      *
      * @return Role
      */
-    public function execute(RoleRequest $request): Role
+    public function execute(RoleCreateRequest $request): Role
     {
         return $this->roleRepository->create($request->validated());
     }

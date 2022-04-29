@@ -2,7 +2,7 @@
 
 namespace Domain\User\Actions;
 
-use App\Api\User\Requests\UserRequest;
+use App\Api\User\Requests\UserCreateRequest;
 use Domain\User\Contracts\UserRepositoryInterface;
 use Domain\User\Models\User;
 
@@ -20,11 +20,11 @@ class CreateUser
     /**
      * Create a user
      *
-     * @param UserRequest $request
+     * @param UserCreateRequest $request
      *
      * @return User
      */
-    public function execute(UserRequest $request): User
+    public function execute(UserCreateRequest $request): User
     {
         return $this->userRepository->create($request->validated());
     }

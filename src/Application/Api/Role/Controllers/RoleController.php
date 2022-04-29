@@ -3,7 +3,7 @@
 namespace App\Api\Role\Controllers;
 
 use App\Api\Base\ApiController;
-use App\Api\Role\Requests\RoleRequest;
+use App\Api\Role\Requests\{RoleCreateRequest, RoleUpdateRequest};
 use App\Api\Role\Resources\{RoleCollection, RoleResource};
 use Domain\Role\Actions\{CreateRole, DeleteRole, GetRole, ListRoles, UpdateRole};
 use Throwable;
@@ -61,12 +61,12 @@ class RoleController extends ApiController
      *   security={{"bearerAuth": {}}},
      * )
      *
-     * @param RoleRequest $request
+     * @param RoleCreateRequest $request
      * @param CreateRole $createRole
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(RoleRequest $request, CreateRole $createRole)
+    public function store(RoleCreateRequest $request, CreateRole $createRole)
     {
         try {
             $role = $createRole->execute($request);
@@ -149,13 +149,13 @@ class RoleController extends ApiController
      *   security={{"bearerAuth": {}}},
      * )
      *
-     * @param RoleRequest  $request
+     * @param RoleUpdateRequest  $request
      * @param int $id
      * @param UpdateRole  $updateRole
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(RoleRequest $request, int $id, UpdateRole $updateRole)
+    public function update(RoleUpdateRequest $request, int $id, UpdateRole $updateRole)
     {
         try {
             $updateRole->execute($id, $request);
