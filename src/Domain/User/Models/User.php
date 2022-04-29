@@ -2,14 +2,14 @@
 
 namespace Domain\User\Models;
 
-use Domain\Role\Models\Role;
-use Laravel\Sanctum\HasApiTokens;
 use Database\Factories\UserFactory;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Domain\Role\Models\Role;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -75,6 +75,6 @@ class User extends Authenticatable
      */
     public function roles()
     {
-       return $this->belongsToMany(Role::class)->withTimestamps();
+        return $this->belongsToMany(Role::class)->withTimestamps();
     }
 }

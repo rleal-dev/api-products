@@ -45,7 +45,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function create(array $data): User
     {
-        return DB::transaction(function() use ($data) {
+        return DB::transaction(function () use ($data) {
             $user = $this->user->create($data);
 
             if (isset($data['roles'])) {
@@ -66,7 +66,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function update(int $id, array $data): bool
     {
-        return DB::transaction(function() use ($id, $data) {
+        return DB::transaction(function () use ($id, $data) {
             $user = $this->findById($id);
 
             if (isset($data['roles'])) {

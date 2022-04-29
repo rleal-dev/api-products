@@ -23,8 +23,8 @@ class LoginController extends ApiController
      *       mediaType="application/json",
      *       @OA\Schema(
      *         example={
-     *           "email": "your@email.com",
-     *           "password": "your-password",
+     *           "email": "user@email.com",
+     *           "password": "12345678",
      *         }
      *       )
      *     )
