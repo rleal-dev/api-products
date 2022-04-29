@@ -65,7 +65,7 @@ http://127.0.0.1:8000/api/documentation
 php artisan test --coverage
 ```
 
-2 - Generate coverate and generate html template
+2 - Generate coverage and html template
 ```bash
 php artisan test --coverage-html public/dashboard-tests
 ```
