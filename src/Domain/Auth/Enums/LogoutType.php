@@ -2,8 +2,9 @@
 
 namespace Domain\Auth\Enums;
 
-enum LogoutType: string
+class LogoutType
 {
-    case ALL_TOKENS = 'ALL_TOKENS';
-    case CURRENT_TOKEN = 'CURRENT_TOKEN';
+    public const ALL_TOKENS = 'ALL_TOKENS';
+
+    public const CURRENT_TOKEN = 'CURRENT_TOKEN';
 }

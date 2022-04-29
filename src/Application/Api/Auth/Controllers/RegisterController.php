@@ -31,7 +31,7 @@ class RegisterController extends ApiController
      *       )
      *     )
      *   ),
-     *   @OA\Response(response=200, description="Successful Operation"),
+     *   @OA\Response(response=201, description="Created Successful"),
      *   @OA\Response(response=401, description="Unauthorized"),
      *   @OA\Response(response=422, description="Unprocessable Entity"),
      *   @OA\Response(response=500, description="Server Error")
@@ -52,6 +52,6 @@ class RegisterController extends ApiController
             return $this->responseError('Error on user register!');
         }
 
-        return $this->responseOk('User created successfully!', ['access_token' => $token]);
+        return $this->responseCreated('User created successfully!', ['access_token' => $token]);
     }
 }
