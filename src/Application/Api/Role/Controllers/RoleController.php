@@ -13,6 +13,18 @@ class RoleController extends ApiController
     /**
      * Get the role list.
      *
+     *  * @OA\Get(
+     *   path="/roles",
+     *   tags={"Role"},
+     *   operationId="roleIndex",
+     *   summary="List of roles",
+     *   description="List of roles",
+     *   @OA\Response(response=200, description="Successful Operation"),
+     *   @OA\Response(response=400, description="Bad Request"),
+     *   @OA\Response(response=500, description="Server Error"),
+     *   security={{"bearerAuth": {}}},
+     * )
+     *
      * @param ListRoles $listRoles
      *
      * @return \Illuminate\Http\JsonResponse
@@ -24,6 +36,30 @@ class RoleController extends ApiController
 
     /**
      * Store a new role.
+     *
+     * @OA\Post(
+     *   path="/roles",
+     *   tags={"Role"},
+     *   operationId="roleStore",
+     *   summary="Create a new role",
+     *   description="Create a new role",
+     *   @OA\RequestBody(
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         example={
+     *           "name": "Role Name",
+     *           "is_active": true,
+     *         }
+     *       )
+     *     )
+     *   ),
+     *   @OA\Response(response=201, description="Created Successful"),
+     *   @OA\Response(response=400, description="Bad Request"),
+     *   @OA\Response(response=422, description="Unprocessable Entity"),
+     *   @OA\Response(response=500, description="Server Error"),
+     *   security={{"bearerAuth": {}}},
+     * )
      *
      * @param RoleRequest $request
      * @param CreateRole $createRole
@@ -49,6 +85,24 @@ class RoleController extends ApiController
     /**
      * Get the role by id.
      *
+     * @OA\Get(
+     *   path="/roles/{id}",
+     *   tags={"Role"},
+     *   operationId="roleShow",
+     *   summary="Show role",
+     *   description="Show role",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="Role Id",
+     *     required=true,
+     *     @OA\Schema(type="integer")
+     *   ),
+     *   @OA\Response(response=200, description="Successful Operation"),
+     *   @OA\Response(response=404, description="Resource Not Found"),
+     *   security={{"bearerAuth": {}}},
+     * )
+     *
      * @param int $id
      * @param GetRole $getRole
      *
@@ -63,6 +117,37 @@ class RoleController extends ApiController
 
     /**
      * Update a role information.
+     *
+     * @OA\Put(
+     *   path="/roles/{id}",
+     *   tags={"Role"},
+     *   operationId="roleUpdate",
+     *   summary="Update role",
+     *   description="Update role",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="Role Id",
+     *     required=true,
+     *     @OA\Schema(type="integer")
+     *   ),
+     *   @OA\RequestBody(
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         example={
+     *           "name": "New Role Name",
+     *            "is_active": true,
+     *          }
+     *        )
+     *     )
+     *   ),
+     *   @OA\Response(response=200, description="Successful Operation"),
+     *   @OA\Response(response=404, description="Resource Not Found"),
+     *   @OA\Response(response=422, description="Unprocessable Entity"),
+     *   @OA\Response(response=500, description="Server Error"),
+     *   security={{"bearerAuth": {}}},
+     * )
      *
      * @param RoleRequest  $request
      * @param int $id
@@ -85,6 +170,26 @@ class RoleController extends ApiController
 
     /**
      * Delete a role by id.
+     *
+     * @OA\Delete(
+     *   path="/roles/{id}",
+     *   tags={"Role"},
+     *   operationId="roleDestroy",
+     *   summary="Destroy role",
+     *   description="Destroy role",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="Role Id",
+     *     required=true,
+     *     @OA\Schema(type="integer")
+     *   ),
+     *   @OA\Response(response=200, description="Successful Operation"),
+     *   @OA\Response(response=404, description="Resource Not Found"),
+     *   @OA\Response(response=422, description="Unprocessable Entity"),
+     *   @OA\Response(response=500, description="Server Error"),
+     *   security={{"bearerAuth": {}}},
+     * )
      *
      * @param int $id
      * @param DeleteRole $deleteRole

@@ -4,6 +4,51 @@ namespace App\Api\Base;
 
 use Illuminate\Http\Response;
 
+/**
+ * Class ApiController
+ *
+ * @OA\Server(
+ *   url=L5_SWAGGER_CONST_HOST,
+ *   description="Alter Solutions - Products API"
+ * )
+ *
+ * @OA\Info(
+ *   title="Alter Solutions - Products API",
+ *   version="1.0.0",
+ *   description="Alter Solutions - Products API",
+ * )
+ *
+ * @OA\SecurityScheme(
+ *   type="http",
+ *   scheme="bearer",
+ *   securityScheme="bearerAuth"
+ * )
+ *
+ * @OA\Tag(
+ *   name="Authentication",
+ *   description="API Endpoints of Authentication"
+ * )
+ *
+ * @OA\Tag(
+ *   name="User",
+ *   description="API Endpoints of Users"
+ * )
+ *
+ * @OA\Tag(
+ *   name="Role",
+ *   description="API Endpoints of Roles"
+ * )
+ *
+ * @OA\Tag(
+ *   name="Category",
+ *   description="API Endpoints of Categories"
+ * )
+ *
+ * @OA\Tag(
+ *   name="Product",
+ *   description="API Endpoints of Campaign Products"
+ * )
+ */
 abstract class ApiController
 {
     /**

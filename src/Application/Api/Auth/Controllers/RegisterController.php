@@ -12,6 +12,31 @@ class RegisterController extends ApiController
     /**
      * Perform user register.
      *
+     * @OA\Post(
+     *   path="/register",
+     *   tags={"Authentication"},
+     *   operationId="register",
+     *   summary="Register user",
+     *   description="Register user",
+     *   @OA\RequestBody(
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         example={
+     *           "name": "Your Name",
+     *           "email": "your@email.com",
+     *           "password": "your-password",
+     *           "password_confirmation": "your-password",
+     *         }
+     *       )
+     *     )
+     *   ),
+     *   @OA\Response(response=200, description="Successful Operation"),
+     *   @OA\Response(response=401, description="Unauthorized"),
+     *   @OA\Response(response=422, description="Unprocessable Entity"),
+     *   @OA\Response(response=500, description="Server Error")
+     * )
+     *
      * @param RegisterRequest  $request
      * @param Register  $action
      *

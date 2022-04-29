@@ -13,6 +13,18 @@ class UserController extends ApiController
     /**
      * Get the user list.
      *
+     * @OA\Get(
+     *   path="/users",
+     *   tags={"User"},
+     *   operationId="userIndex",
+     *   summary="List of users",
+     *   description="List of users",
+     *   @OA\Response(response=200, description="Successful Operation"),
+     *   @OA\Response(response=400, description="Bad Request"),
+     *   @OA\Response(response=500, description="Server Error"),
+     *   security={{"bearerAuth": {}}},
+     * )
+     *
      * @param ListUsers $listUsers
      *
      * @return \Illuminate\Http\JsonResponse
@@ -24,6 +36,33 @@ class UserController extends ApiController
 
     /**
      * Store a new user.
+     *
+     * @OA\Post(
+     *   path="/users",
+     *   tags={"User"},
+     *   operationId="userStore",
+     *   summary="Create a new user",
+     *   description="Create a new user",
+     *   @OA\RequestBody(
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         example={
+     *           "name": "User Name",
+     *           "email": "user@email.com",
+     *           "password": "user-password",
+     *           "password_confirmation": "user-password",
+     *           "is_active": true,
+     *         }
+     *       )
+     *     )
+     *   ),
+     *   @OA\Response(response=201, description="Created Successful"),
+     *   @OA\Response(response=400, description="Bad Request"),
+     *   @OA\Response(response=422, description="Unprocessable Entity"),
+     *   @OA\Response(response=500, description="Server Error"),
+     *   security={{"bearerAuth": {}}},
+     * )
      *
      * @param UserRequest $request
      * @param CreateUser $createUser
@@ -49,6 +88,24 @@ class UserController extends ApiController
     /**
      * Get the user by id.
      *
+     * @OA\Get(
+     *   path="/users/{id}",
+     *   tags={"User"},
+     *   operationId="userShow",
+     *   summary="Show user",
+     *   description="Show user",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="User Id",
+     *     required=true,
+     *     @OA\Schema(type="integer")
+     *   ),
+     *   @OA\Response(response=200, description="Successful Operation"),
+     *   @OA\Response(response=404, description="Resource Not Found"),
+     *   security={{"bearerAuth": {}}},
+     * )
+     *
      * @param int $id
      * @param GetUser $getUser
      *
@@ -63,6 +120,36 @@ class UserController extends ApiController
 
     /**
      * Update a user information.
+     *
+     * @OA\Put(
+     *   path="/users/{id}",
+     *   tags={"User"},
+     *   operationId="userUpdate",
+     *   summary="Update user",
+     *   description="Update user",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="User Id",
+     *     required=true,
+     *     @OA\Schema(type="integer")
+     *   ),
+     *   @OA\RequestBody(
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         example={
+     *           "name": "New User Name",
+     *          }
+     *        )
+     *     )
+     *   ),
+     *   @OA\Response(response=200, description="Successful Operation"),
+     *   @OA\Response(response=404, description="Resource Not Found"),
+     *   @OA\Response(response=422, description="Unprocessable Entity"),
+     *   @OA\Response(response=500, description="Server Error"),
+     *   security={{"bearerAuth": {}}},
+     * )
      *
      * @param UserRequest  $request
      * @param int $id
@@ -85,6 +172,26 @@ class UserController extends ApiController
 
     /**
      * Delete a user by id.
+     *
+     * @OA\Delete(
+     *   path="/users/{id}",
+     *   tags={"User"},
+     *   operationId="userDestroy",
+     *   summary="Destroy user",
+     *   description="Destroy user",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="User Id",
+     *     required=true,
+     *     @OA\Schema(type="integer")
+     *   ),
+     *   @OA\Response(response=200, description="Successful Operation"),
+     *   @OA\Response(response=404, description="Resource Not Found"),
+     *   @OA\Response(response=422, description="Unprocessable Entity"),
+     *   @OA\Response(response=500, description="Server Error"),
+     *   security={{"bearerAuth": {}}},
+     * )
      *
      * @param int $id
      * @param DeleteUser $deleteUser

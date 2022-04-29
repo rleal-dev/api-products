@@ -12,6 +12,29 @@ class LoginController extends ApiController
     /**
      * Perform user login.
      *
+     * @OA\Post(
+     *   path="/login",
+     *   tags={"Authentication"},
+     *   operationId="login",
+     *   summary="Login user",
+     *   description="Login user",
+     *   @OA\RequestBody(
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         example={
+     *           "email": "your@email.com",
+     *           "password": "your-password",
+     *         }
+     *       )
+     *     )
+     *   ),
+     *   @OA\Response(response=200, description="Successful Operation"),
+     *   @OA\Response(response=401, description="Unauthorized"),
+     *   @OA\Response(response=422, description="Unprocessable Entity"),
+     *   @OA\Response(response=500, description="Server Error")
+     * )
+     *
      * @param LoginRequest  $request
      * @param Login  $action
      *

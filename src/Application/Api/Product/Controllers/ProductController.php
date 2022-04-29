@@ -13,6 +13,18 @@ class ProductController extends ApiController
     /**
      * Get the product list.
      *
+     * @OA\Get(
+     *   path="/products",
+     *   tags={"Product"},
+     *   operationId="productIndex",
+     *   summary="List of products",
+     *   description="List of products",
+     *   @OA\Response(response=200, description="Successful Operation"),
+     *   @OA\Response(response=400, description="Bad Request"),
+     *   @OA\Response(response=500, description="Server Error"),
+     *   security={{"bearerAuth": {}}},
+     * )
+     *
      * @param ListProducts $listProducts
      *
      * @return \Illuminate\Http\JsonResponse
@@ -24,6 +36,36 @@ class ProductController extends ApiController
 
     /**
      * Store a new product.
+     *
+     * @OA\Post(
+     *   path="/products",
+     *   tags={"Product"},
+     *   operationId="productStore",
+     *   summary="Create a new product",
+     *   description="Create a new product",
+     *   @OA\RequestBody(
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         example={
+     *           "description": "Product Name",
+     *           "category_id": 1,
+     *           "dimensions": "100X100",
+     *           "code": "ABC12345",
+     *           "reference": "XYZ54321",
+     *           "quantity_stock": 10,
+     *           "price": 100.00,
+     *           "is_active": true,
+     *         }
+     *       )
+     *     )
+     *   ),
+     *   @OA\Response(response=201, description="Created Successful"),
+     *   @OA\Response(response=400, description="Bad Request"),
+     *   @OA\Response(response=422, description="Unprocessable Entity"),
+     *   @OA\Response(response=500, description="Server Error"),
+     *   security={{"bearerAuth": {}}},
+     * )
      *
      * @param ProductRequest $request
      * @param CreateProduct $createProduct
@@ -49,6 +91,24 @@ class ProductController extends ApiController
     /**
      * Get the product by id.
      *
+     * @OA\Get(
+     *   path="/products/{id}",
+     *   tags={"Product"},
+     *   operationId="productShow",
+     *   summary="Show product",
+     *   description="Show product",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="Product Id",
+     *     required=true,
+     *     @OA\Schema(type="integer")
+     *   ),
+     *   @OA\Response(response=200, description="Successful Operation"),
+     *   @OA\Response(response=404, description="Resource Not Found"),
+     *   security={{"bearerAuth": {}}},
+     * )
+     *
      * @param int $id
      * @param GetProduct $getProduct
      *
@@ -63,6 +123,39 @@ class ProductController extends ApiController
 
     /**
      * Update a product information.
+     *
+     * @OA\Put(
+     *   path="/products/{id}",
+     *   tags={"Product"},
+     *   operationId="productUpdate",
+     *   summary="Update product",
+     *   description="Update product",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="Product Id",
+     *     required=true,
+     *     @OA\Schema(type="integer")
+     *   ),
+     *   @OA\RequestBody(
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *         example={
+     *           "name": "New Product Name",
+     *           "quantity_stock": 10,
+     *           "price": 120.00,
+     *           "is_active": true,
+     *          }
+     *        )
+     *     )
+     *   ),
+     *   @OA\Response(response=200, description="Successful Operation"),
+     *   @OA\Response(response=404, description="Resource Not Found"),
+     *   @OA\Response(response=422, description="Unprocessable Entity"),
+     *   @OA\Response(response=500, description="Server Error"),
+     *   security={{"bearerAuth": {}}},
+     * )
      *
      * @param ProductRequest  $request
      * @param int $id
@@ -85,6 +178,26 @@ class ProductController extends ApiController
 
     /**
      * Delete a product by id.
+     *
+     * @OA\Delete(
+     *   path="/products/{id}",
+     *   tags={"Product"},
+     *   operationId="productDestroy",
+     *   summary="Destroy product",
+     *   description="Destroy product",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="Product Id",
+     *     required=true,
+     *     @OA\Schema(type="integer")
+     *   ),
+     *   @OA\Response(response=200, description="Successful Operation"),
+     *   @OA\Response(response=404, description="Resource Not Found"),
+     *   @OA\Response(response=422, description="Unprocessable Entity"),
+     *   @OA\Response(response=500, description="Server Error"),
+     *   security={{"bearerAuth": {}}},
+     * )
      *
      * @param int $id
      * @param DeleteProduct $deleteProduct
