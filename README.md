@@ -30,12 +30,12 @@ L5_SWAGGER_GENERATE_ALWAYS=true
 L5_SWAGGER_CONST_HOST=http://127.0.0.1:8000/api/v1
 ```
 
-5 - Rum composer for download dependencies
+5 - Run composer for download dependencies
 ```bash
 composer install or composer update
 ```
 
-6 - Rum migrations for create tables
+6 - Run migrations for create tables
 ```bash
 php artisan migrate --seed
 ```
@@ -60,7 +60,7 @@ http://127.0.0.1:8000/api/documentation
 
 ## Tests
 
-1 - Rum tests in console
+1 - Run tests in console
 ```bash
 php artisan test --coverage
 ```
