@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
 
         // Custom Middlewares
         'json.response' => \App\Core\Http\Middleware\ForceJsonResponse::class,
+        'check.roles' => \App\Core\Http\Middleware\CheckRolePermissions::class,
     ];
 }

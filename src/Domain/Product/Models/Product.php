@@ -6,7 +6,6 @@ use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\{Model, SoftDeletes};
 
-
 class Product extends Model
 {
     use HasFactory, SoftDeletes;

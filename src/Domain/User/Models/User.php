@@ -2,6 +2,7 @@
 
 namespace Domain\User\Models;
 
+use Domain\Role\Models\Role;
 use Laravel\Sanctum\HasApiTokens;
 use Database\Factories\UserFactory;
 use Illuminate\Support\Facades\Hash;
@@ -65,5 +66,15 @@ class User extends Authenticatable
     protected static function newFactory()
     {
         return UserFactory::new();
+    }
+
+    /**
+     * Relationship with the Role model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function roles()
+    {
+       return $this->belongsToMany(Role::class)->withTimestamps();
     }
 }

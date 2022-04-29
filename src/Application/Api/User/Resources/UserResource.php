@@ -2,6 +2,7 @@
 
 namespace App\Api\User\Resources;
 
+use App\Api\Role\Resources\RoleCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -21,6 +22,7 @@ class UserResource extends JsonResource
             'email' => $this->email,
             'is_active' => (bool) $this->is_active,
             'created_at' => $this->created_at,
+            'roles' => new RoleCollection($this->roles),
         ];
     }
 }

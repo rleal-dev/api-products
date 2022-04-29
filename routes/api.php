@@ -22,7 +22,7 @@ Route::prefix('v1')->middleware('json.response')->group(function () {
     Route::post('register', RegisterController::class);
     Route::post('login', LoginController::class);
 
-    Route::middleware(['auth:sanctum'])->group(function () {
+    Route::middleware(['auth:sanctum', 'check.roles'])->group(function () {
         Route::delete('logout', LogoutController::class);
 
         Route::apiResources([

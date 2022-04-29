@@ -53,6 +53,7 @@ class UserController extends ApiController
      *           "password": "user-password",
      *           "password_confirmation": "user-password",
      *           "is_active": true,
+     *           "roles": [1, 2]
      *         }
      *       )
      *     )

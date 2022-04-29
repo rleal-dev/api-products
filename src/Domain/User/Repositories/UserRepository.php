@@ -4,6 +4,7 @@ namespace Domain\User\Repositories;
 
 use Domain\User\Contracts\UserRepositoryInterface;
 use Domain\User\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -44,7 +45,15 @@ class UserRepository implements UserRepositoryInterface
      */
     public function create(array $data): User
     {
-        return $this->user->create($data);
+        return DB::transaction(function() use ($data) {
+            $user = $this->user->create($data);
+
+            if (isset($data['roles'])) {
+                $user->roles()->attach($data['roles']);
+            }
+
+            return $user;
+        });
     }
 
     /**
@@ -57,9 +66,15 @@ class UserRepository implements UserRepositoryInterface
      */
     public function update(int $id, array $data): bool
     {
-        $user = $this->findById($id);
+        return DB::transaction(function() use ($id, $data) {
+            $user = $this->findById($id);
 
-        return $user->update($data);
+            if (isset($data['roles'])) {
+                $user->roles()->sync($data['roles']);
+            }
+
+            return $user->update($data);
+        });
     }
 
     /**

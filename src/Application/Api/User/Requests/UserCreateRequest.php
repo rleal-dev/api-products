@@ -28,6 +28,7 @@ class UserCreateRequest extends FormRequest
             'email' => ['required', 'email', 'max:150', 'unique:users,email,' . $this->segment(4)],
             'password' => ['required', 'min:8', 'confirmed'],
             'is_active' => ['nullable', 'boolean'],
+            'roles' => ['nullable', 'array'],
         ];
     }
 }
