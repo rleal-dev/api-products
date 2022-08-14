@@ -1,4 +1,4 @@
-# PHP Test - Alter Solutions (Products API)
+# Products API
 
 ## Installation
 
