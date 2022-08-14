@@ -4,7 +4,7 @@
 
 1 - Clone this repository
 ```bash
-git clone https://github.com/rleal-dev/api-products-alter-solutions-test.git
+git clone https://github.com/rleal-dev/api-products.git
 ```
 
 2 - Create the .env
